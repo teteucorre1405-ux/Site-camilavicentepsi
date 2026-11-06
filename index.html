@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila Vicente | Psicóloga de Mulheres</title>
+    <!-- Google Fonts: Cormorant Garamond e Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Vinculação com o arquivo style.css -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Estilos de Refinamento Visual e Vídeo de Fundo no Hero -->
+    <style>
+        @keyframes floatUpDown {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animated-card-1 { animation: floatUpDown 4s ease-in-out infinite; }
+        .animated-card-2 { animation: floatUpDown 4.5s ease-in-out infinite 0.5s; }
+        .animated-card-3 { animation: floatUpDown 5s ease-in-out infinite 1s; }
+        .animated-card-4 { animation: floatUpDown 4.2s ease-in-out infinite 1.5s; }
+
+        .service-card, .testimonial-card, .target-item-card, .how-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+        .service-card:hover, .testimonial-card:hover, .target-item-card:hover, .how-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
+        }
+
+        /* Hero com Vídeo de Fundo (Background Video) */
+        .hero-split-section {
+            padding: 160px 0 120px 0 !important;
+            position: relative !important;
+            overflow: hidden !important;
+            color: #fff !important;
+        }
+
+        /* Vídeo cobrindo todo o fundo do Hero */
+        .hero-bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            object-fit: cover;
+        }
+
+        /* Camada escura/nude translúcida por cima do vídeo para destacar o texto */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 46, 53, 0.75);
+            z-index: 2;
+        }
+
+        .hero-split-container {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-split-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        .hero-split-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #f7e6e9;
+            margin-bottom: 35px;
+            text-align: center;
+        }
+        .hero-split-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn-outline-custom {
+            display: inline-block;
+            padding: 14px 28px;
+            border: 1.5px solid #ffffff;
+            color: #ffffff;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-custom:hover {
+            background-color: #ffffff;
+            color: #4A2E35;
+        }
+
+        /* Demais seções */
+        .about-section { position: relative; overflow: hidden; background: #fff; padding: 100px 0; }
+        .services-section { position: relative; overflow: hidden; background: #faf5f5; padding: 100px 0; }
+        
+        /* Ajuste específico para o título e subtítulo da seção de Áreas de Atuação ficarem em Marrom */
+        .services-section h2 {
+            color: #2c1810 !important;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        .services-section p {
+            color: #555 !important;
+        }
+
+        .target-section { position: relative; overflow: hidden; background-color: #faf5f5; padding: 100px 0; }
+
+        /* Estilos do Grid Refinado "Para Quem é a Terapia" */
+        .target-grid-custom {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .target-item-card {
+            background: #ffffff;
+            padding: 25px 20px;
+            border-radius: 12px;
+            border-left: 3px solid #6B2D3C;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        .target-item-card i {
+            color: #6B2D3C;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        .target-item-card span {
+            font-size: 0.98rem;
+            color: #4a4a4a;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        /* Seção Como Funciona */
+        .how-section {
+            background-color: #6B2D3C !important;
+            position: relative;
+            overflow: hidden;
+            padding: 100px 0;
+        }
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        .how-card {
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: left;
+            position: relative;
+        }
+        .how-number {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #6B2D3C;
+            opacity: 0.25;
+        }
+        .how-card i {
+            font-size: 2rem;
+            color: #6B2D3C;
+            margin-bottom: 20px;
+        }
+        .how-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: #2c1810;
+            margin-bottom: 12px;
+        }
+        .how-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+            text-align: justify;
+            margin: 0;
+        }
+
+        /* Seção de Depoimentos com Carrossel Automático */
+        .testimonials-section {
+            position: relative;
+            overflow: hidden;
+            background-color: #4A2E35 !important;
+            padding: 100px 0;
+        }
+        .testimonials-section h2 {
+            color: #ffffff !important;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .testimonials-carousel {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px 10px 40px 10px;
+            max-width: 650px;
+            margin: 0 auto;
+            scrollbar-width: none;
+        }
+
+        .testimonials-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonials-carousel .testimonial-card {
+            flex: 0 0 100%;
+            scroll-snap-align: center;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .faq-section { position: relative; overflow: hidden; background-color: #fcf9f9; padding: 90px 0; }
+
+        /* Estilos do FAQ / Dúvidas Frequentes */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .faq-section h2 {
+            color: #2c1810 !important;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .faq-section p {
+            color: #555 !important;
+        }
+        .faq-item {
+            background: #ffffff;
+            border: 1px solid #e8d7d9;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
+        }
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 20px 25px;
+            text-align: left;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2c1810 !important;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .faq-question:hover {
+            color: #6B2D3C !important;
+        }
+        .faq-question i {
+            color: #6B2D3C;
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 25px;
+            color: #555 !important;
+            font-size: 0.98rem;
+            line-height: 1.7;
+            text-align: justify;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 350px;
+            padding: 0 25px 20px 25px;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 968px) {
+            .hero-split-text h1 {
+                font-size: 2.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5521993345744" target="_blank" class="floating-whatsapp" title="Fale conosco no WhatsApp" data-aos="zoom-in" data-aos-delay="500">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Cabeçalho Fixo -->
+    <header class="header-nav">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo-wrapper">
+                <img src="logo.jpeg" alt="Logo Camila Vicente" class="nav-logo-img">
+                <div class="nav-logo-text">
+                    CAMILA VICENTE <span>| PSICÓLOGA DE MULHERES</span>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <a href="#quem-sou">Sobre Mim</a>
+                <a href="#servicos">Áreas de Atuação</a>
+                <a href="#como-funciona">Como Funciona</a>
+                <a href="#para-quem">Para Quem é</a>
+                <a href="#faq">Dúvidas</a>
+                <a href="#contato" class="nav-btn-contact">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. Seção Inicial (Hero com Vídeo de Fundo) -->
+    <section class="hero-split-section">
+        <video autoplay muted loop playsinline class="hero-bg-video">
+            <source src="psicologo.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-split-container" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-split-text">
+                <div style="font-size: 0.9rem; font-weight: 600; color: #f3e6e8; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px;">Atendimento 100% Online • Para todo o Brasil</div>
+                <h1>Psicoterapia para mulheres em busca de uma vida mais consciente e autêntica</h1>
+                <p>Psicoterapia online para mulheres que se sentem estressadas, sobrecarregadas ou desconectadas de si mesmas e desejam compreender seus padrões, fortalecer sua autonomia e construir uma vida mais alinhada aos seus valores.</p>
+                
+                <div class="hero-split-buttons">
+                    <a href="#contato" class="btn-primary">Agendar Minha Consulta</a>
+                    <a href="#quem-sou" class="btn-outline-custom">Conheça a Psicóloga</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Seção Sobre Mim -->
+    <section class="about-section" id="quem-sou">
+        <div class="container about-container" style="position: relative; z-index: 2;">
+            <div class="about-text" style="text-align: justify;" data-aos="fade-right">
+                <h2>Sobre Mim</h2>
+                <p>Me chamo Camila Vicente, sou psicóloga formada pela Universidade Santa Úrsula (USU) e atuo na psicoterapia de mulheres adultas.</p>
+                <p>Muitas das dores, cobranças e dificuldades vividas pelas mulheres também são atravessadas pelas expectativas e pelos papéis que somos ensinadas a ocupar ao longo da vida. Por isso, meu olhar clínico considera não apenas a história individual, mas também o contexto social e cultural em que cada mulher está inserida.</p>
+                <p>Na psicoterapia, utilizo a Análise do Comportamento e a Terapia de Aceitação e Compromisso (ACT), oferecendo um atendimento ético, baseado em evidências e individualizado, que ajuda você a compreender seus padrões, fazer escolhas mais conscientes e construir uma vida que tenha sentido para você.</p>
+                <div style="margin-top: 15px; font-weight: 600; color: #5c4033; text-align: left;">
+                    <p>PSICÓLOGA CLÍNICA | CRP 05/87814</p>
+                </div>
+            </div>
+            <div class="about-image-card" data-aos="fade-left">
+                <div class="image-frame">
+                    <img src="sobremim.jpeg" alt="Camila Vicente - Psicóloga de Mulheres">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Seção de Áreas de Atuação -->
+    <section class="services-section" id="servicos">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div class="services-title-wrapper" data-aos="fade-up">
+                <h2>Áreas de Atuação</h2>
+                <p>Deslize para o lado para explorar as principais frentes do acompanhamento terapêutico.</p>
+            </div>
+
+            <div class="services-carousel" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card">
+                    <div class="card-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                    <h3>Compreender padrões</h3>
+                    <p>Compreender os padrões que hoje mantêm seu sofrimento, identificando ciclos repetitivos para trazer mais clareza e caminhos para a mudança.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>Relação flexível com emoções</h3>
+                    <p>Desenvolver uma relação mais flexível com pensamentos e emoções difíceis, aprendendo a lidar com eles sem se deixar paralisar.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon"><i class="fa-solid fa-compass"></i></div>
+                    <h3>Escolhas alinhadas aos valores</h3>
+                    <p>Fazer escolhas mais alinhadas aos seus valores e àquilo que realmente faz sentido para a sua história e propósito de vida.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>Relacionamentos saudáveis</h3>
+                    <p>Construir relacionamentos mais saudáveis, aprimorando a comunicação, o estabelecimento de limites e trocas mais empáticas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="card-icon"><i class="fa-solid fa-spa"></i></div>
+                    <h3>Conexão consigo mesma</h3>
+                    <p>Viver de forma mais consciente, autêntica e conectada consigo mesma, cultivando leveza e autonomia no dia a dia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Seção Como Funciona a Terapia Online -->
+    <section class="how-section" id="como-funciona">
+        <div class="container" style="position: relative; z-index: 2;" data-aos="fade-up">
+            <div class="services-title-wrapper" style="margin-bottom: 20px; text-align: center;">
+                <h2 style="color: #ffffff; font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin-bottom: 10px;">Como Funciona a Terapia Online</h2>
+                <p style="color: #f7e6e9; font-size: 1.05rem;">Praticidade, segurança e tecnologia de ponta para acompanhar o seu desenvolvimento emocional.</p>
+            </div>
+
+            <div class="how-grid">
+                <div class="how-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="how-number">01</div>
+                    <i class="fa-solid fa-video"></i>
+                    <h3>Atendimento Online</h3>
+                    <p>As sessões acontecem 100% online, pelo Google Meet, com segurança, privacidade e acolhimento, de onde você estiver.</p>
+                </div>
+
+                <div class="how-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="how-number">02</div>
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <h3>SomaPsico</h3>
+                    <p>Aplicativo de apoio terapêutico para registrar humor, emoções, pensamentos e responder escalas. Facilita sua rotina com lembretes e avisos via WhatsApp.</p>
+                </div>
+
+                <div class="how-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="how-number">03</div>
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h3>Simples e Organizado</h3>
+                    <p>Agendamentos, pagamentos e demais informações são organizados para que você não precise se preocupar com burocracias e foque no seu processo.</p>
+                </div>
+
+                <div class="how-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="how-number">04</div>
+                    <i class="fa-solid fa-house-laptop"></i>
+                    <h3>O que Você Precisa</h3>
+                    <p>Basta estar em um lugar reservado, com boa conexão à internet e fones de ouvido. O restante, a gente constrói juntas ao longo do processo.</p>
+                </div>
+
+                <div class="how-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="how-number">05</div>
+                    <i class="fa-solid fa-comments"></i>
+                    <h3>Apoio entre as Sessões</h3>
+                    <p>Em situações pontuais, você também pode contar com meu canal de WhatsApp para comunicações entre as sessões, respeitando os combinados e limites da psicoterapia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Seção Para Quem é a Terapia -->
+    <section class="target-section" id="para-quem">
+        <div class="container" style="position: relative; z-index: 2; max-width: 1000px;" data-aos="fade-up">
+            <div class="services-title-wrapper" style="margin-bottom: 30px; text-align: center;">
+                <h2 style="color: #2c1810; font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; margin-bottom: 10px;">Para Quem é a Terapia?</h2>
+                <p style="color: #555; font-size: 1.05rem; max-width: 750px; margin: 0 auto; line-height: 1.7;">
+                    A psicoterapia é voltada para mulheres que se sentem estressadas, sobrecarregadas, ansiosas ou desconectadas de si mesmas, que têm dificuldade de se posicionar, estabelecer limites, lidar com as próprias emoções e desejam construir uma vida mais alinhada aos seus valores.
+                </p>
+            </div>
+
+            <div style="font-weight: 600; color: #6B2D3C; text-align: center; margin-bottom: 25px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px;">
+                Atuo principalmente com demandas relacionadas a:
+            </div>
+
+            <div class="target-grid-custom">
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-bolt"></i>
+                    <span>Sobrecarga feminina e burnout</span>
+                </div>
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="150">
+                    <i class="fa-solid fa-heart-circle-xmark"></i>
+                    <span>Autoestima, autocrítica e dificuldade de se posicionar</span>
+                </div>
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-people-arrows"></i>
+                    <span>Relacionamentos, limites e padrões que geram sofrimento</span>
+                </div>
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="250">
+                    <i class="fa-solid fa-utensils"></i>
+                    <span>Relação com o corpo e alimentação emocional</span>
+                </div>
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <span>Compulsão alimentar e padrões alimentares</span>
+                </div>
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="350">
+                    <i class="fa-solid fa-route"></i>
+                    <span>Transições de vida e carreira</span>
+                </div>
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>Ansiedade e estresse</span>
+                </div>
+                <div class="target-item-card" data-aos="fade-up" data-aos-delay="450">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Experiências traumáticas e situações de violência</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Seção de Depoimentos com Carrossel Automático -->
+    <section class="testimonials-section">
+        <div class="container" style="position: relative; z-index: 2;" data-aos="fade-up">
+            <h2>Depoimentos</h2>
+            <div class="testimonials-carousel" id="depoimentosCarousel">
+                <div class="testimonial-card">
+                    <p>"Encontrei um espaço de acolhimento onde me sinto à vontade. A condução leve e sem pressão, somada ao respeito ao meu ritmo, tem feito toda a diferença no meu processo. Sou muito grata por todo o carinho e paciência!"</p>
+                    <span class="client-name">— Júlia Silveira</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Sua forma de conduzir as sessões sempre é muito esclarecedora e me faz sentir verdadeiramente ouvida e compreendida. Desde o início seu acolhimento foi super necessário; mesmo ao tratar de questões muito ruins você sempre me preparou um ambiente leve e confiável. Te indicaria de olhos fechados, você é uma profissional excelente, atenciosa, atualizada e humana."</p>
+                    <span class="client-name">— Amanda Martins</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"No primeiro encontro já me senti ‘em casa’… um acolhimento sem igual, o quanto é bom ser ouvido e entendido… ambiente seguro e descontraído. Muito obrigada por tudo e com certeza serei uma pessoa melhor com as suas orientações!"</p>
+                    <span class="client-name">— Ariane Silva</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Fazer terapia com a Dra. Camila é como conversar com uma amiga. Ela nos deixa completamente à vontade, sem julgamentos, e celebra cada pequena conquista do nosso processo com muito carinho e humanidade. Sou muito grata por todo o acolhimento!"</p>
+                    <span class="client-name">— Mayla Soares</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"O acompanhamento com a Dra. Camila transformou minha forma de enxergar a vida. Aprendi a impor limites, compreendi que tenho o direito de errar e evoluir, e percebi que não preciso estar exausta para validar minhas realizações. É um processo profundo de descoberta de identidade e autoconhecimento que me faz gostar cada vez mais de quem estou me tornando."</p>
+                    <span class="client-name">— Simony Salamon</span>
+                </div>
+            </div>
+            <p style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 15px;"><i class="fa-solid fa-arrows-left-right"></i> Passa sozinho ou arraste para o lado</p>
+        </div>
+    </section>
+
+    <!-- 7. Seção de Dúvidas Frequentes (FAQ) -->
+    <section class="faq-section" id="faq">
+        <div class="container" style="position: relative; z-index: 2;" data-aos="fade-up">
+            <div class="services-title-wrapper" style="margin-bottom: 40px; text-align: center;">
+                <h2>Dúvidas Frequentes</h2>
+                <p>Respostas rápidas para as principais dúvidas sobre o processo terapêutico.</p>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Como funciona a primeira sessão?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A primeira sessão é um momento de acolhimento e conhecimento mútuo. Vamos conversar sobre o que trouxe você à psicoterapia, sua história, o contexto em que está inserida e o que já tentou fazer para lidar com esse sofrimento. Também vou conhecer aspectos importantes da sua história pessoal e clínica, para compreender melhor suas necessidades e, a partir disso, construirmos juntas um plano terapêutico individualizado.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        A terapia online é sigilosa?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim. O atendimento psicológico online segue os mesmos princípios éticos de sigilo e confidencialidade da psicoterapia presencial. As sessões acontecem em ambiente reservado e com os cuidados necessários para preservar a sua privacidade.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Qual é a duração e a frequência das sessões?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>As sessões têm 50 minutos de duração. No início, a frequência costuma ser semanal, especialmente para construirmos o vínculo terapêutico e acompanharmos de perto o processo. Conforme a evolução e as necessidades de cada caso, os encontros podem passar a ser quinzenais.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Como saber se a terapia é para mim?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Você não precisa ter certeza antes de começar. Se percebe que algo está gerando sofrimento, se sente que está repetindo padrões que gostaria de compreender e mudar ou simplesmente deseja se conhecer melhor e fazer mudanças na sua vida, a psicoterapia pode ser um espaço para isso. A primeira sessão também é um momento para entendermos juntas se o meu trabalho faz sentido para você.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Seção Final / Formulário de Contato -->
+    <section class="footer-cta-section" id="contato">
+        <div class="container text-center" data-aos="zoom-in">
+            <h2>Dê o primeiro passo rumo ao seu bem-estar.<br><span>Entre em contato</span></h2>
+            <p>Preencha os campos abaixo para solicitar o seu agendamento ou tirar dúvidas. Retornarei em breve.</p>
+            
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="47599d4c-17cb-478e-87d8-8fdfa180f872">
+
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="name" placeholder="Digite seu nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone / WhatsApp</label>
+                    <input type="tel" id="telefone" name="phone" placeholder="(00) 00000-0000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Solicitação</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-info-item">
+                <i class="fa-brands fa-instagram"></i>
+                <a href="https://instagram.com/psi.camilavicente" target="_blank">@psi.camilavicente</a>
+            </div>
+            <div class="footer-info-item">
+                <i class="fa-brands fa-whatsapp"></i>
+                <a href="https://wa.me/5521993345744" target="_blank">(21) 99334-5744</a>
+            </div>
+            <div class="footer-info-item">
+                <i class="fa-regular fa-envelope"></i>
+                <a href="mailto:camilavicente.psi@gmail.com">camilavicente.psi@gmail.com</a>
+            </div>
+            <div class="footer-info-item">
+                <i class="fa-solid fa-laptop"></i>
+                <span>Atendimento Psicológico Online para todo o Brasil</span>
+            </div>
+        </div>
+        
+        <div class="footer-crp text-center">
+            <p>PSICÓLOGA CLÍNICA | CRP 05/87814</p>
+        </div>
+    </footer>
+
+    <!-- AOS Animation JS e Scripts (FAQ + Carrossel Automático) -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 80,
+        });
+
+        // Script do FAQ (Acordeão)
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const questionBtn = item.querySelector('.faq-question');
+            questionBtn.addEventListener('click', () => {
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                item.classList.toggle('active');
+            });
+        });
+
+        // Script do Carrossel de Depoimentos Automático
+        const carousel = document.getElementById('depoimentosCarousel');
+        let scrollInterval;
+
+        function startAutoScroll() {
+            scrollInterval = setInterval(() => {
+                if (!carousel) return;
+                const cardWidth = carousel.querySelector('.testimonial-card').offsetWidth + 25;
+                
+                if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+                }
+            }, 4000);
+        }
+
+        function stopAutoScroll() {
+            clearInterval(scrollInterval);
+        }
+
+        if (carousel) {
+            startAutoScroll();
+            carousel.addEventListener('mouseenter', stopAutoScroll);
+            carousel.addEventListener('mouseleave', startAutoScroll);
+        }
+    </script>
+</body>
+</html>
